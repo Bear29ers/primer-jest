@@ -5,6 +5,6 @@ export default {
   },
   reporters: ['default', ['jest-junit', { outputDirectory: 'reports', outputName: 'jest-report.xml' }]],
   collectCoverage: true,
-  coveragePorts: ['text-summary', 'html'],
+  coverageReporters: ['text-summary', 'html'],
   coverageDirectory: 'reports/coverage',
 };
