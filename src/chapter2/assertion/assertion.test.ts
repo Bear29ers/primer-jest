@@ -61,3 +61,46 @@ const can4 = new Can({
   flavor: 'grapefruit',
   ounces: 12,
 });
+
+// toBe関数
+// can1とcan2は同一のインスタンスの参照を持っていないため、異なると評価される
+test('can1 and can2 are not the exact same instance', () => {
+  expect(can1).not.toBe(can2);
+});
+
+// can2とcan3は等しいと評価される
+test('can2 and can3 are the same instance', () => {
+  expect(can2).toBe(can3);
+});
+
+// toEqual関数
+// can1とcan2は再帰的に評価され、同じプロパティ・値を持っているため、等しいと評価される
+test('can1 and can2 have the same properties', () => {
+  expect(can1).toEqual(can2);
+});
+
+// can2とcan4は等しいと評価される
+test('can2 and can4 have the same properties', () => {
+  expect(can2).toEqual(can4);
+});
+
+// toStrictEqual関数
+// 生成元クラスを考慮する以外のtoEqualとtoStrictEqualの違い
+test('differences between toEqual and toStrictEqual', () => {
+  // undefinedを持つプロパティはtoEqualでは無視される
+  expect({ foo: NaN, bar: undefined }).toEqual({ foo: NaN });
+
+  // undefinedを持つプロパティはtoStrictEqualでは一致しないと評価する
+  expect({ foo: NaN, bar: undefined }).not.toStrictEqual({ foo: NaN });
+
+  // undefinedやemptyを持つArrayはtoEqualでは同じと評価する
+  expect([, undefined, 1]).toEqual([undefined, , 1]); // eslint-disable-line no-sparse-arrays
+
+  // undefinedやemptyを持つArrayはtoStrictEqualでは一致しないと評価される
+  expect([, undefined, 1]).not.toStrictEqual([undefined, , 1]); // eslint-disable-line no-sparse-arrays
+});
+
+// can2とcan4はオブジェクトの生成元クラスが異なるため、等しくないと評価される
+test('can2 and can4 are different class', () => {
+  expect(can2).not.toStrictEqual(can4);
+});
