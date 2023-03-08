@@ -104,3 +104,12 @@ test('differences between toEqual and toStrictEqual', () => {
 test('can2 and can4 are different class', () => {
   expect(can2).not.toStrictEqual(can4);
 });
+
+// toBeTruthyとtoBeFalsyを利用した値の評価
+test('"0" should be Truthy', () => {
+  expect('0').toBeTruthy();
+});
+
+test('0 should be Falsy', () => {
+  expect(0).toBeFalsy();
+});
