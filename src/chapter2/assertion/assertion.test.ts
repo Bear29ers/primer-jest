@@ -123,11 +123,32 @@ test('should be null', () => {
 test('should be undefined', () => {
   expect(undefined).toBe(undefined);
   expect(undefined).toBeUndefined();
-})
+});
 
 test('should be null or undefined', () => {
-  let a; // undefined
+  // undefined
+  let a; // eslint-disable-line prefer-const
   expect(a == null).toBe(true);
   a = null; // null
   expect(a == null).toBe(true);
-})
+});
+
+// 曖昧な結果の評価
+const hoge = () => ({ hoge: 'hogehoge', number: 0 });
+
+test('hoge return anything', () => {
+  // 期待値やnullやundefinedではないことを評価
+  expect(hoge()).toEqual(expect.anything());
+
+  // 期待値の一部のプロパティがnullやundefinedではないことを評価
+  expect(hoge()).toEqual({
+    hoge: 'hogehoge',
+    number: expect.anything(),
+  });
+
+  // 期待値の一部のプロパティnumberがNumber型であることを評価
+  expect(hoge()).toEqual({
+    hoge: 'hogehoge',
+    number: expect.any(Number),
+  });
+});
