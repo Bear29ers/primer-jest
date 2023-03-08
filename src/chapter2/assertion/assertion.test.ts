@@ -152,3 +152,17 @@ test('hoge return anything', () => {
     number: expect.any(Number),
   });
 });
+
+// 小数の計算で意図した結果にならない → NumberがIEEE 754 倍精度浮動小数点数であるため
+test('0.1 + 0.2 not returns 0.3', () => {
+  expect(0.1 + 0.2).not.toBe(0.3);
+});
+
+// 浮動小数点数の誤差を許容した数値の評価
+test('0.1 + 0.2 returns 0.3', () => {
+  expect(0.1 + 0.2).toBeCloseTo(0.3); // デフォルトでは小数点以下2桁までを評価する
+});
+
+test('0.301 and 0.3 are different when numDigits is 3', () => {
+  expect(0.3 + 0.001).not.toBeCloseTo(0.3, 3); // 小数点以下3桁目まで評価する場合、0.3と0.301は異なると評価する
+});
