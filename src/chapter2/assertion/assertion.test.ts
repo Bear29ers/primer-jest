@@ -113,3 +113,21 @@ test('"0" should be Truthy', () => {
 test('0 should be Falsy', () => {
   expect(0).toBeFalsy();
 });
+
+// null、undefinedの評価
+test('should be null', () => {
+  expect(null).toBe(null);
+  expect(null).toBeNull();
+});
+
+test('should be undefined', () => {
+  expect(undefined).toBe(undefined);
+  expect(undefined).toBeUndefined();
+})
+
+test('should be null or undefined', () => {
+  let a; // undefined
+  expect(a == null).toBe(true);
+  a = null; // null
+  expect(a == null).toBe(true);
+})
