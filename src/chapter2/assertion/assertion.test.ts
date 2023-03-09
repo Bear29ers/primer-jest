@@ -3,6 +3,7 @@
 // ---------------------------------
 
 import { exportSpecifier } from '@babel/types';
+import exp from 'constants';
 
 test('testを利用してテストケースを作成する', () => {
   const result = true; // テスト結果
@@ -281,4 +282,43 @@ test('contain IP address between 10.0.0.0 and 10.0.0.99', () => {
   expect(regex.test(log1)).toBe(true);
   expect(regex.test(log2)).toBe(true);
   expect(regex.test(log3)).toBe(true);
+});
+
+// ---------------------------------
+// 配列の部分一致
+// ---------------------------------
+
+// 配列の要素がプリミティブ型の場合
+const fruitList = ['Apple', 'Lemon', 'Orange'];
+
+// 1つの要素が含まれていることを検証
+test('contains Apple in fruitList', () => {
+  expect(fruitList).toContain('Apple');
+});
+
+// 複数の要素が含まれていることを検証
+test('contains Apple and Orange in fruitList', () => {
+  expect(fruitList).toEqual(expect.arrayContaining(['Apple', 'Orange']));
+});
+
+// 配列の要素がオブジェクト型の場合
+const itemList = [
+  { name: 'Apple', price: 100 },
+  { name: 'Lemon', price: 150 },
+  { name: 'Orange', price: 120 },
+];
+
+// 1つの要素が含まれていることを検証
+test('contains Apple in itemList', () => {
+  expect(itemList).toContainEqual({ name: 'Apple', price: 100 });
+});
+
+// 複数の要素が含まれていることを検証
+test('contains Apple and Orange in itemList', () => {
+  expect(itemList).toEqual(
+    expect.arrayContaining([
+      { name: 'Apple', price: 100 },
+      { name: 'Orange', price: 120 },
+    ]),
+  );
 });
