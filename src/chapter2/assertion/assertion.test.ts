@@ -322,3 +322,40 @@ test('contains Apple and Orange in itemList', () => {
     ]),
   );
 });
+
+// ---------------------------------
+// オブジェクトの部分一致
+// ---------------------------------
+
+const ciBuild = {
+  number: 1,
+  duration: 12000,
+  state: 'success',
+  triggerParameters: {
+    is_scheduled: true,
+  },
+  type: 'scheduled_pipeline',
+  actor: {
+    login: 'Taka',
+  },
+};
+
+// 1つのプロパティを検証
+test('build state should be success', () => {
+  expect(ciBuild).toHaveProperty('state', 'success');
+});
+
+// ネストしたプロパティを検証
+test('actor should be Taka', () => {
+  expect(ciBuild).toHaveProperty('actor.login', 'Taka');
+});
+
+// 複数のプロパティを検証
+test('triggered by the scheduled pipeline', () => {
+  expect(ciBuild).toEqual(
+    expect.objectContaining({
+      triggerParameters: expect.objectContaining({ is_scheduled: true }),
+      type: 'scheduled_pipeline',
+    }),
+  );
+});
