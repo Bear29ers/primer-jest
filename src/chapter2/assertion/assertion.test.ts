@@ -4,6 +4,7 @@
 
 import { exportSpecifier } from '@babel/types';
 import exp from 'constants';
+import { resolve } from 'path';
 
 test('testを利用してテストケースを作成する', () => {
   const result = true; // テスト結果
@@ -412,3 +413,16 @@ test('return lemon', (done) => {
 // ---------------------------------
 // Promise を利用した非同期な関数の結果の評価
 // ---------------------------------
+
+// .resolvesを利用した非同期な関数の結果の評価
+const fetchDataWithPromiseResolve = () => new Promise((resolve) => setTimeout(resolve, 100, 'lemon'));
+
+// .resolvesを利用して成功時の値を受け取る
+test('return lemon with promise', () => {
+  return expect(fetchDataWithPromiseResolve()).resolves.toBe('lemon');
+});
+
+// async/awaitを利用
+test('return lemon with async/await', async () => {
+  await expect(fetchDataWithPromiseResolve()).resolves.toBe('lemon');
+});
