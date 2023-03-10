@@ -408,3 +408,7 @@ test('return lemon', (done) => {
   };
   fetchDataWithCallback(callback);
 });
+
+// ---------------------------------
+// Promise を利用した非同期な関数の結果の評価
+// ---------------------------------
