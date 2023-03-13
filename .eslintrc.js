@@ -42,5 +42,6 @@ module.exports = {
     ],
     'no-unused-vars': 'warn',
     'react/react-in-jsx-scope': 'off',
+    'jest/valid-title': 'off',
   },
 };
