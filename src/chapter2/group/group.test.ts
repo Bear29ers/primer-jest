@@ -39,6 +39,6 @@ describe('before/after timing', () => {
     // グループ2のテスト1
     test('', () => console.log('2 - test1'));
     // グループ2のテスト2
-    test('', () => console.log('2 - test2'));
+    test('', () => console.log('2 - test2')); // eslint-disable-line
   });
 });

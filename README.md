@@ -10,6 +10,7 @@
 <li><a href="#01-1">等価を評価するtoBe、toEqual、toStrictEqualの違い</a></li>
 <li><a href="#01-2">toBe、toEqual、toStrictEqualの使い分け</a></li>
 <li><a href="#01-3">前後処理が実行されるタイミング</a></li>
+<li><a href="#01-4">テストをスキップ</a></li>
 </ul>
 
 <br>
@@ -43,5 +44,13 @@
 - `beforeEach`: describe 内で定義されているそれぞれのテストの実行前に 1 回実行される
 - `afterAll`: describe 内で定義されているすべてのテストの終了後に 1 回実行される
 - `afterEach`: describe 内で定義されているそれぞれのテストの終了後に 1 回実行される
+
+<br>
+
+<h4 id="01-4">テストをスキップ</h4>
+
+- `describe.skip` or `xdescribe`: グループ内のテストケースすべてをスキップ
+- `test.skip` or `xtest`: テストケースをスキップ
+- `it.skip` or `xit`: テストケースをスキップ
 
 <br>
