@@ -15,6 +15,7 @@
 <li><a href="#01-6">mockに含まれるプロパティ</a></li>
 <li><a href="#01-7">mock.resultsに含まれるオブジェクトのtypeプロパティに含まれる値</a></li>
 <li><a href="#01-8">モックのリセット</a></li>
+<li><a href="#01-9">UIテストの方法</a></li>
 </ul>
 
 <br>
@@ -103,5 +104,14 @@
 - `jest.clearAllMocks()`: すべてのモックオブジェクトの mock のプロパティをリセットする。
 - `jest.resetAllMocks()`: 全てのモックオブジェクトの mock のプロパティをリセットする、設定した mock 関数をクリアする。オリジナルの関数に戻るわけではない。
 - `jest.restoreAllMocks()`: すべてのモックオブジェクトの mock 関数をオリジナルの関数へ戻す。`spyOn`を利用して、モック化した関数のみ対象。
+
+<br>
+
+<h4 id="01-9">UIテストの方法</h4>
+
+- jsdom を利用した UI テスト
+- react-test-renderer を利用した静的なコンポーネントのスナップショットテスト
+- Reast Testing Library を利用した動きのあるコンポーネントのテスト
+- Storybook を活用したコンポーネントのテスト
 
 <br>
