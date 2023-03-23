@@ -24,4 +24,15 @@ describe('e2e test with selenium and chromeDriver', () => {
   afterAll(async () => {
     await chromeDriver.quit(); // Chromeを停止する
   });
+
+  // chromedriverを利用してgoogle.comの検索
+  it('a search keyword will be on the page title in google.com', async () => {
+    // google.comにアクセス
+    await chromeDriver.get('https://www.google.com/ncr');
+    // 検索ボックスの要素を探し、`webdriver`を入力し、Enterキーを入力
+    await chromeDriver.findElement(By.name('q')).sendKeys('webdriver', Key.RETURN);
+    // ページのタイトルが`webdriver - Google Search`であることを確認
+    const results = await chromeDriver.wait(until.titleIs('webdriver - Google Search'), 10000);
+    expect(results).toBe(true);
+  });
 });
