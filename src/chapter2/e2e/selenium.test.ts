@@ -2,6 +2,7 @@ import { WebDriver, Builder, By, Key, until, Capabilities } from 'selenium-webdr
 
 jest.setTimeout(20000); // タイムアウトを20秒に延長
 
+// chromedriverをセットアップ
 describe('e2e test with selenium and chromeDriver', () => {
   let chromeDriver: WebDriver;
 
@@ -34,5 +35,24 @@ describe('e2e test with selenium and chromeDriver', () => {
     // ページのタイトルが`webdriver - Google Search`であることを確認
     const results = await chromeDriver.wait(until.titleIs('webdriver - Google Search'), 10000);
     expect(results).toBe(true);
+  });
+
+  // geckodriverをセットアップ
+  describe('e2e test with selenium and geckoDriver', () => {
+    let geckoDriver: WebDriver;
+
+    beforeAll(async () => {
+      const fireFoxCapabilities = Capabilities.firefox();
+      fireFoxCapabilities.set('moz:firefoxOptions', {
+        args: ['--headless'],
+      });
+
+      // Firefoxを起動しWebDriverのインスタンスを取得
+      geckoDriver = await new Builder().withCapabilities(fireFoxCapabilities).build();
+    });
+
+    afterAll(async () => {
+      await geckoDriver.quit();
+    });
   });
 });
