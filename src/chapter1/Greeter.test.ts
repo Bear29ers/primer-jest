@@ -4,7 +4,7 @@ describe('Greeter', () => {
   it.each([
     ['Taka', 'Hello Taka'],
     ['Daniel', 'Hello Daniel'],
-  ])('Says Hello and $name', (name, expected) => {
+  ])('Says Hello and %s', (name, expected) => {
     const greeter = new Greeter();
     expect(greeter.greet(name)).toBe(expected);
   });
