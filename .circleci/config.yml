@@ -31,7 +31,29 @@ jobs: # ジョブの設定を追加
           path: reports/Jest
       - store_artifacts: # カバレッジをアップロード
           path: reports/coverage
+  ui-test:
+    docker:
+      - image: cimg/node:18.14.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v2-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install node packages
+          command: npm install
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: node-v2-{{ checksum "package-lock.json" }}
+      - run:
+          name: Run UI Test
+          command: npm test -- src/chapter2/ui
+      - run:
+          name: Upload Storybook to Chromatic # ChromaticへStorybookをアップロードする
+          command: npm run chromatic
 workflows: # ワークフローの設定を追加
   test:
     jobs:
       - test
+      - ui-test
