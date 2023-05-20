@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=chpt_64bf07ae6ff26f8"
+    "chromatic": "chromatic --exit-once-uploaded --exit-zero-on-changes"
   },
   "repository": {
     "type": "git",
