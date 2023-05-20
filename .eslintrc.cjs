@@ -31,6 +31,9 @@ module.exports = {
     'import/resolver': {
       typescript: true,
     },
+    'react': {
+      version: '18.2.0',
+    },
   },
   globals: {},
   rules: {
