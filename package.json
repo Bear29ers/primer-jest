@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "primer-jest",
   "version": "1.0.0",
   "type": "module",
   "description": "",
@@ -11,7 +11,7 @@
     "build-storybook": "build-storybook",
     "chromatic": "chromatic --exit-once-uploaded --exit-zero-on-changes",
     "lint": "eslint src",
-    "format": "prettier --list-different src",
+    "format": "prettier --check src",
     "lint-staged": "lint-staged --allow-empty"
   },
   "repository": {
@@ -74,7 +74,7 @@
   "readme": "ERROR: No README data found!",
   "_id": "y@1.0.0",
   "lint-staged": {
-    "**/*.{ts,tsx}": [
+    "src": [
       "eslint",
       "prettier --write"
     ]
