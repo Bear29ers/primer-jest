@@ -11,7 +11,7 @@
     "build-storybook": "build-storybook",
     "chromatic": "chromatic --exit-once-uploaded --exit-zero-on-changes",
     "lint": "eslint src",
-    "format": "pretteir --list-different src",
+    "format": "prettier --list-different src",
     "lint-staged": "lint-staged --allow-empty"
   },
   "repository": {
@@ -74,9 +74,9 @@
   "readme": "ERROR: No README data found!",
   "_id": "y@1.0.0",
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "**/*.{ts,tsx}": [
       "eslint",
-      "pretteir --write"
+      "prettier --write"
     ]
   }
 }
