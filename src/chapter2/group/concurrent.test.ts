@@ -8,5 +8,5 @@ test.concurrent.skip.each(Array.from(new Array(100).keys()).map((n) => ({ n, exp
   async ({ n, expected }) => {
     console.log(n);
     await expect(fetchData()).resolves.toBe(expected);
-  }
+  },
 );

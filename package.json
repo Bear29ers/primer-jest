@@ -11,7 +11,8 @@
     "build-storybook": "build-storybook",
     "chromatic": "chromatic --exit-once-uploaded --exit-zero-on-changes",
     "lint": "eslint src",
-    "format": "prettier --check src",
+    "format": "prettier --write src",
+    "check": "prettier --check src",
     "lint-staged": "lint-staged --allow-empty"
   },
   "repository": {
